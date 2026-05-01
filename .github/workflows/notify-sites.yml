@@ -1,0 +1,25 @@
+name: Notify sites of CSS update
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger flat site rebuild
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.SITE_DISPATCH_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/madeleinehhhh/madeleine.dev/dispatches \
+            -d '{"event_type":"css-updated"}'
+
+      - name: Trigger 11ty site rebuild
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.SITE_DISPATCH_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/madeleinehhhh/madeleinehhhh.github.io/dispatches \
+            -d '{"event_type":"css-updated"}'
