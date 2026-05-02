@@ -60,6 +60,14 @@
 	--clr-brightorange: #FF6924;
 	--clr-salmon: #D7765B;
 	--clr-beige: #DCB39E;
+
+  --link-color: var(--clr-darkblue);
+  --link-decoration-color: var(--clr-brightblue);
+  --link-border-width: 2px;
+  --link-border-color: transparent;
+  --link-hover-color: var(--clr-brightblue);
+  --link-hover-border-color: var(--clr-lightbrightblue);
+  --link-active-color: var(--clr-brightblue-alt);
 }
 
 /* Visually Hidden */
@@ -77,11 +85,68 @@
 /* links */
 a[href] {
 	color: var(--link-color);
+
+  position: relative;
+
+  color: var(--link-color);
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+  text-decoration-color: (--link-color);
+  border: var(--link-border-width) dotted var(--link-border-color);
+
+  padding: var(--link-border-width);
+
+  transition: all var(--animation-speed) var(--ease);
+
 }
 a[href]:visited {
-	color: var(--link-color-visited);
+	color: var(--link-active-color);
+  border-color: var(--link-hover-border-color);
 }
 a[href]:hover,
-a[href]:active {
-	color: var(--link-color-active);
+a[href]:active,
+a[href]:visited:hover,
+a[href]:focus {
+	color: var(--link-hover-color);
+}
+p a, ul a, ol a {
+  font-weight: bolder;
+}
+
+h1,
+.site-title,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1;
+  margin:0;
+}
+
+h1, h1.site-title{
+  font-size: var(--xxxxxx-large);
+}
+h2 {
+  font-size: var(--xxxxx-large);
+}
+h3 {
+  font-size: var(--xxxx-large);
+}
+h4 {
+  font-size: var(--xxx-large);
+}
+h5 {
+  font-size: var(--xx-large);
+}
+h6 {
+  font-size: var(--x-large);
+}
+.site-title {
+  font-size: var(--small);
+}
+.site-title a {
+  font-weight:normal;
 }
