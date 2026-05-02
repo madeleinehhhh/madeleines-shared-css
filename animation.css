@@ -1,0 +1,175 @@
+html {
+  scroll-timeline: --page-scroll block;
+}
+body {
+  position: relative;
+}
+@property --rotationAngle {
+  initial-value: 0deg;
+  inherits: false;
+  syntax: '<angle>';
+}
+@property --movementLength-y {
+  initial-value: 0;
+  inherits: false;
+  syntax: '<length-percentage>';
+}
+@property --movementLength-x {
+  initial-value: 0;
+  inherits: false;
+  syntax: '<length-percentage>';
+}
+.blob-01, .blob-02, .blob-03, .blob-04, .blob-05, .blob-06 {
+  /* https://css-generators.com/blob/ */
+  --blob-shape: shape(from 96.41% 45.35%, curve to 97.74% 54.92% with 97.60% 50.00%, curve to 96.64% 64.66% with 97.88% 59.84%, curve to 91.87% 73.08% with 95.39% 69.48%, curve to 85.64% 80.66% with 88.35% 76.69%, curve to 79.38% 88.04% with 82.93% 84.64%, curve to 71.56% 94.07% with 75.83% 91.43%, curve to 62.18% 96.42% with 67.30% 96.71%, curve to 52.27% 97.97% with 57.07% 96.14%, curve to 42.68% 98.30% with 47.47% 99.81%, curve to 33.75% 94.17% with 37.89% 96.79%, curve to 25.42% 89.36% with 29.62% 91.55%, curve to 17.61% 84.04% with 21.23% 87.17%, curve to 10.80% 77.22% with 13.98% 80.92%, curve to 5.67% 69.02% with 7.62% 73.53%, curve to 3.42% 59.64% with 3.72% 64.52%, curve to 2.68% 49.96% with 3.11% 54.77%, curve to 2.53% 40.17% with 2.25% 45.14%, curve to 5.08% 30.76% with 2.81% 35.19%, curve to 10.66% 22.70% with 7.35% 26.33%, curve to 17.70% 16.07% with 13.98% 19.08%, curve to 25.55% 10.84% with 21.41% 13.06%, curve to 33.77% 5.81% with 29.70% 8.62%, curve to 42.65% 1.59% with 37.83% 3.00%, curve to 52.31% 1.74% with 47.47% 0.18%, curve to 62.12% 3.59% with 57.15% 3.31%, curve to 71.20% 6.64% with 67.08% 3.88%, curve to 78.86% 12.65% with 75.31% 9.39%, curve to 86.34% 18.94% with 82.40% 15.91%, curve to 91.79% 26.69% with 90.27% 21.97%, curve to 94.26% 36.06% with 93.30% 31.42%, curve to 96.41% 45.35% with 95.22% 40.71%);
+  --_timing-blobby: 40s;
+  --_timing-movement: 600s;
+  --_timing-rotate: 1s;
+
+  --movementLength-y: 0;
+  --movementLength-x: 0;
+
+  --blob-size: 50vw;
+  
+  --_i: 1;
+
+  content: '';
+
+  position: fixed;
+  z-index: -1;
+  top: calc(var(--movementLength-y) * var(--_i));
+  left: calc(var(--movementLength-x) * var(--_i));
+  height: var(--blob-size);
+  aspect-ratio: 1;
+
+  rotate: calc(var(--rotationAngle) * var(--_i));
+
+  clip-path: var(--blob-shape);
+  background: oklch(from var(--clr-quinary-bright) l c h / 0.2);
+  
+  animation-name: blobby, movement, rotate;
+  animation-duration: var(--_timing-blobby), var(--_timing-movement), auto;
+  animation-iteration-count: infinite, infinite, 1;
+  animation-timing-function: ease, ease, linear;
+  animation-timeline: auto, auto, --page-scroll;
+
+}
+.blob-01 {
+  --_timing-blobby: 50s;
+  --_timing-movement: 700s;
+  --_timing-rotate: 1s;
+
+  --movementLength-y: 0;
+  --movementLength-x: 0;
+
+  --blob-size: 10vw;
+
+  background: linear-gradient(oklch(from var(--clr-quinary-bright) l c h / 0.2) 20%, oklch(from var(--clr-quinary-bright) l c h / 0.4), oklch(from var(--clr-quatrenary-dark) l c h / 0.4) 90%, oklch(from var(--clr-quatrenary-dark) l c h / 0.2));
+}
+.blob-01 {
+  --_timing-blobby: 70s;
+  --_timing-movement: 800s;
+  --_timing-rotate: 1s;
+
+  --movementLength-y: 0;
+  --movementLength-x: 0;
+
+  --blob-size: 130vw;
+
+  --_i: -1;
+
+  background: linear-gradient(oklch(from var(--clr-quinary-bright) l c h / 0.2) 20%, oklch(from var(--clr-quinary-bright) l c h / 0.4), oklch(from var(--clr-quatrenary-dark) l c h / 0.4) 90%, oklch(from var(--clr-quatrenary-dark) l c h / 0.2));
+}
+.blob-03 {
+  --_timing-blobby: 40s;
+  --_timing-movement: 1000s;
+  --_timing-rotate: 1s;
+
+  --movementLength-y: 80vh;
+  --movementLength-x: 70vw;
+
+  --blob-size: 60vw;
+
+  background: linear-gradient(oklch(from var(--clr-quinary-bright) l c h / 0.2) 20%, oklch(from var(--clr-quinary-bright) l c h / 0.4), oklch(from var(--clr-quatrenary-dark) l c h / 0.4) 90%, oklch(from var(--clr-quatrenary-dark) l c h / 0.2));
+}
+.blob-04 {
+  --_timing-blobby: 90s;
+  --_timing-movement: 1000s;
+  --_timing-rotate: 1s;
+
+  --movementLength-y: 30vh;
+  --movementLength-x: 0;
+
+  --blob-size: 40vw;
+
+  --_i: -1;
+
+  background: linear-gradient(oklch(from var(--clr-quinary-bright) l c h / 0.2) 20%, oklch(from var(--clr-quinary-bright) l c h / 0.4), oklch(from var(--clr-quatrenary-dark) l c h / 0.4) 90%, oklch(from var(--clr-quatrenary-dark) l c h / 0.2));
+}
+.blob-05 {
+  --_timing-blobby: 100s;
+  --_timing-movement: 300s;
+  --_timing-rotate: 1s;
+
+  --movementLength-y: 0;
+  --movementLength-x: 0;
+
+  --blob-size: 20vw;
+
+  background: linear-gradient(oklch(from var(--clr-quinary-bright) l c h / 0.2) 20%, oklch(from var(--clr-quinary-bright) l c h / 0.4), oklch(from var(--clr-quatrenary-dark) l c h / 0.4) 90%, oklch(from var(--clr-quatrenary-dark) l c h / 0.2));
+}
+.blob-06 {
+  --_timing-blobby: 60s;
+  --_timing-movement: 600s;
+  --_timing-rotate: 1s;
+
+  --movementLength-y: 20px;
+  --movementLength-x: 20vw;
+
+  --blob-size: 110vw;
+
+  --_i: -1;
+
+  /* background: linear-gradient(oklch(from var(--clr-quinary-bright) l c h / 0.2) 20%, oklch(from var(--clr-quinary-bright) l c h / 0.4), oklch(from var(--clr-quatrenary-dark) l c h / 0.4) 90%, oklch(from var(--clr-quatrenary-dark) l c h / 0.2)); */
+}
+@keyframes blobby {
+  0% {
+    clip-path: var(--blob-shape);
+  }
+  25% {
+    clip-path: shape(from 92.94% 45.79%, curve to 95.78% 54.79% with 94.90% 50.00%, curve to 95.71% 64.40% with 96.66% 59.59%, curve to 90.04% 71.89% with 94.76% 69.21%, curve to 83.27% 78.71% with 85.32% 74.58%, curve to 78.17% 86.57% with 81.22% 82.84%, curve to 71.17% 93.41% with 75.12% 90.31%, curve to 61.86% 94.47% with 67.23% 96.51%, curve to 51.99% 96.05% with 56.50% 92.44%, curve to 42.92% 97.32% with 47.48% 99.67%, curve to 34.91% 91.38% with 38.36% 94.97%, curve to 27.38% 86.15% with 31.46% 87.79%, curve to 19.72% 81.78% with 23.30% 84.50%, curve to 12.63% 75.88% with 16.15% 79.06%, curve to 7.22% 68.36% with 9.12% 72.69%, curve to 5.83% 59.23% with 5.32% 64.02%, curve to 5.41% 49.91% with 6.33% 54.44%, curve to 3.94% 40.37% with 4.48% 45.37%, curve to 5.97% 31.18% with 3.40% 35.38%, curve to 12.34% 23.96% with 8.54% 26.99%, curve to 19.91% 18.46% with 16.14% 20.94%, curve to 27.65% 14.28% with 23.67% 15.99%, curve to 34.94% 8.57% with 31.64% 12.57%, curve to 42.86% 2.44% with 38.24% 4.57%, curve to 52.08% 3.34% with 47.48% 0.31%, curve to 61.72% 5.56% with 56.68% 6.38%, curve to 70.40% 8.09% with 66.76% 4.74%, curve to 77.07% 14.89% with 74.03% 11.45%, curve to 84.76% 20.45% with 80.10% 18.33%, curve to 89.87% 27.63% with 89.41% 22.57%, curve to 90.66% 37.14% with 90.32% 32.70%, curve to 92.94% 45.79% with 90.99% 41.58%);
+  }
+  50% {
+    clip-path: shape(from 94.87% 45.55%, curve to 96.87% 54.86% with 96.40% 50.00%, curve to 96.22% 64.54% with 97.34% 59.73%, curve to 91.05% 72.56% with 95.11% 69.36%, curve to 84.58% 79.80% with 87.00% 75.75%, curve to 78.84% 87.39% with 82.17% 83.84%, curve to 71.39% 93.78% with 75.51% 90.93%, curve to 62.04% 95.56% with 67.27% 96.62%, curve to 52.15% 97.12% with 56.82% 94.49%, curve to 42.79% 97.87% with 47.48% 99.75%, curve to 34.27% 92.93% with 38.09% 95.98%, curve to 26.29% 87.93% with 30.44% 89.88%, curve to 18.55% 83.04% with 22.15% 85.98%, curve to 11.61% 76.62% with 14.95% 80.09%, curve to 6.36% 68.73% with 8.28% 73.16%, curve to 4.49% 59.46% with 4.43% 64.30%, curve to 3.89% 49.93% with 4.54% 54.62%, curve to 3.16% 40.26% with 3.24% 45.24%, curve to 5.47% 30.95% with 3.07% 35.28%, curve to 11.41% 23.26% with 7.88% 26.62%, curve to 18.68% 17.13% with 14.94% 19.91%, curve to 26.49% 12.37% with 22.41% 14.36%, curve to 34.29% 7.03% with 30.56% 10.37%, curve to 42.74% 1.97% with 38.01% 3.70%, curve to 52.21% 2.45% with 47.48% 0.24%, curve to 61.94% 4.47% with 56.94% 4.67%, curve to 70.84% 7.28% with 66.94% 4.26%, curve to 78.06% 13.65% with 74.74% 10.31%, curve to 85.63% 19.61% with 81.38% 16.99%, curve to 90.93% 27.11% with 89.89% 22.24%, curve to 92.66% 36.54% with 91.98% 31.99%, curve to 94.87% 45.55% with 93.34% 41.09%);
+  }
+}
+@keyframes movement {
+  25% {
+    --movementLength-y: 30vh;
+    --movementLength-x: 30vw;
+  }
+  50% {
+    --movementLength-y: 20vh;
+    --movementLength-x: 70vw;
+  }
+  75% {
+    --movementLength-y: 100vh;
+    --movementLength-x: 90vw;
+  }
+}
+@keyframes scale {
+  15% {
+    scale: 2
+  }
+  75% {
+    scale: 3
+  }
+}
+@keyframes rotate {
+  0% {
+    --rotationAngle: 0;
+  }
+  100% {
+    --rotationAngle: 20deg;
+  }
+}
