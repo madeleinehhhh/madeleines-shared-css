@@ -70,6 +70,23 @@
   --link-active-color: var(--clr-brightblue-alt);
 }
 
+body {
+  font-family: var(--font-body);
+  font-size: var(--small);
+  line-height: 1.5;
+
+  background-color: var(--clr-bg);
+  color: var(--clr-fg);
+}
+.container {
+  padding: 4vw 8vw;
+  margin-inline: auto;
+  max-width: 70ch;
+
+  background-color: oklch(from var(--clr-bg) l c h / 0.6);
+
+}
+
 /* Visually Hidden */
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
 .visually-hidden:not(:focus):not(:active) {
