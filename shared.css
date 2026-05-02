@@ -61,7 +61,7 @@
 	--clr-salmon: #D7765B;
 	--clr-beige: #DCB39E;
 
-  --link-color: var(--clr-darkblue);
+  --link-color: var(--clr-mediumblue);
   --link-decoration-color: var(--clr-brightblue);
   --link-border-width: 2px;
   --link-border-color: transparent;
@@ -107,7 +107,7 @@ a[href] {
   color: var(--link-color);
   text-decoration-style: dotted;
   text-decoration-thickness: 1px;
-  text-decoration-color: (--link-color);
+  text-decoration-color: (var(--link-border-color));
   border: var(--link-border-width) dotted var(--link-border-color);
 
   padding: var(--link-border-width);
