@@ -26,9 +26,6 @@ body {
   --_timing-movement: 600s;
   --_timing-rotate: 1s;
 
-  --clr-blob-01: var(--clr-gold);
-  --clr-blob-02: var(--clr-maroonish);
-
   --movementLength-y: 0;
   --movementLength-x: 0;
 
