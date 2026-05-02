@@ -100,14 +100,12 @@ body {
 
 /* links */
 a[href] {
-	color: var(--link-color);
-
   position: relative;
 
   color: var(--link-color);
   text-decoration-style: dotted;
   text-decoration-thickness: 1px;
-  text-decoration-color: (var(--link-border-color));
+  text-decoration-color: var(--link-border-color);
   border: var(--link-border-width) dotted var(--link-border-color);
 
   padding: var(--link-border-width);
