@@ -26,6 +26,9 @@ body {
   --_timing-movement: 600s;
   --_timing-rotate: 1s;
 
+  --clr-blob-01: var(--clr-gold);
+  --clr-blob-02: var(--clr-maroonish);
+
   --movementLength-y: 0;
   --movementLength-x: 0;
 
@@ -45,7 +48,7 @@ body {
   rotate: calc(var(--rotationAngle) * var(--_i));
 
   clip-path: var(--blob-shape);
-  background: oklch(from var(--clr-quinary-bright) l c h / 0.2);
+  background: oklch(from var(--clr-blob-01) l c h / 0.2);
   
   animation-name: blobby, movement, rotate;
   animation-duration: var(--_timing-blobby), var(--_timing-movement), auto;
@@ -64,7 +67,7 @@ body {
 
   --blob-size: 10vw;
 
-  background: linear-gradient(oklch(from var(--clr-quinary-bright) l c h / 0.2) 20%, oklch(from var(--clr-quinary-bright) l c h / 0.4), oklch(from var(--clr-quatrenary-dark) l c h / 0.4) 90%, oklch(from var(--clr-quatrenary-dark) l c h / 0.2));
+  background: linear-gradient(oklch(from var(--clr-blob-01) l c h / 0.2) 20%, oklch(from var(--clr-blob-01) l c h / 0.4), oklch(from var(--clr-blob-02) l c h / 0.4) 90%, oklch(from var(--clr-blob-02) l c h / 0.2));
 }
 .blob-01 {
   --_timing-blobby: 70s;
@@ -78,7 +81,7 @@ body {
 
   --_i: -1;
 
-  background: linear-gradient(oklch(from var(--clr-quinary-bright) l c h / 0.2) 20%, oklch(from var(--clr-quinary-bright) l c h / 0.4), oklch(from var(--clr-quatrenary-dark) l c h / 0.4) 90%, oklch(from var(--clr-quatrenary-dark) l c h / 0.2));
+  background: linear-gradient(oklch(from var(--clr-blob-01) l c h / 0.2) 20%, oklch(from var(--clr-blob-01) l c h / 0.4), oklch(from var(--clr-blob-02) l c h / 0.4) 90%, oklch(from var(--clr-blob-02) l c h / 0.2));
 }
 .blob-03 {
   --_timing-blobby: 40s;
@@ -90,7 +93,7 @@ body {
 
   --blob-size: 60vw;
 
-  background: linear-gradient(oklch(from var(--clr-quinary-bright) l c h / 0.2) 20%, oklch(from var(--clr-quinary-bright) l c h / 0.4), oklch(from var(--clr-quatrenary-dark) l c h / 0.4) 90%, oklch(from var(--clr-quatrenary-dark) l c h / 0.2));
+  background: linear-gradient(oklch(from var(--clr-blob-01) l c h / 0.2) 20%, oklch(from var(--clr-blob-01) l c h / 0.4), oklch(from var(--clr-blob-02) l c h / 0.4) 90%, oklch(from var(--clr-blob-02) l c h / 0.2));
 }
 .blob-04 {
   --_timing-blobby: 90s;
@@ -104,7 +107,7 @@ body {
 
   --_i: -1;
 
-  background: linear-gradient(oklch(from var(--clr-quinary-bright) l c h / 0.2) 20%, oklch(from var(--clr-quinary-bright) l c h / 0.4), oklch(from var(--clr-quatrenary-dark) l c h / 0.4) 90%, oklch(from var(--clr-quatrenary-dark) l c h / 0.2));
+  background: linear-gradient(oklch(from var(--clr-blob-01) l c h / 0.2) 20%, oklch(from var(--clr-blob-01) l c h / 0.4), oklch(from var(--clr-blob-02) l c h / 0.4) 90%, oklch(from var(--clr-blob-02) l c h / 0.2));
 }
 .blob-05 {
   --_timing-blobby: 100s;
@@ -116,7 +119,7 @@ body {
 
   --blob-size: 20vw;
 
-  background: linear-gradient(oklch(from var(--clr-quinary-bright) l c h / 0.2) 20%, oklch(from var(--clr-quinary-bright) l c h / 0.4), oklch(from var(--clr-quatrenary-dark) l c h / 0.4) 90%, oklch(from var(--clr-quatrenary-dark) l c h / 0.2));
+  background: linear-gradient(oklch(from var(--clr-blob-01) l c h / 0.2) 20%, oklch(from var(--clr-blob-01) l c h / 0.4), oklch(from var(--clr-blob-02) l c h / 0.4) 90%, oklch(from var(--clr-blob-02) l c h / 0.2));
 }
 .blob-06 {
   --_timing-blobby: 60s;
@@ -130,7 +133,7 @@ body {
 
   --_i: -1;
 
-  /* background: linear-gradient(oklch(from var(--clr-quinary-bright) l c h / 0.2) 20%, oklch(from var(--clr-quinary-bright) l c h / 0.4), oklch(from var(--clr-quatrenary-dark) l c h / 0.4) 90%, oklch(from var(--clr-quatrenary-dark) l c h / 0.2)); */
+  /* background: linear-gradient(oklch(from var(--clr-blob-01) l c h / 0.2) 20%, oklch(from var(--clr-blob-01) l c h / 0.4), oklch(from var(--clr-blob-02) l c h / 0.4) 90%, oklch(from var(--clr-blob-02) l c h / 0.2)); */
 }
 @keyframes blobby {
   0% {
