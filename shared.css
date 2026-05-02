@@ -69,6 +69,37 @@
   --link-hover-border-color: var(--clr-lightbrightblue);
   --link-active-color: var(--clr-brightblue-alt);
 }
+/* Theme colors */
+:root {
+  --clr-secondary: var(--clr-greenbright);
+  --clr-accent: #bd4500;
+
+	--color-gray-20: var(var(--clr-palefoam));
+	--color-gray-50: oklch(88.107% 0.00687 146.197);
+	--color-gray-90: oklch(26.554% 0.05122 73.939);
+
+	--clr-bg: var(--color-lightbeige);
+  --clr-fg: var(--clr-darkteal);
+
+	--link-color: var(--clr-greenbright);
+	--link-color-active: oklch(from var(--link-color) calc(l * 1.1) c h);;
+	--link-color-visited: oklch(from var(--link-color) calc(l * 0.8) c h);
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+    --link-color: var(--clr-greenlighter);
+
+		--clr-bg: var(--clr-darkteal);
+    --clr-fg: var(--clr-lightbeige);
+	}
+}
 
 body {
   font-family: var(--font-body);
