@@ -66,9 +66,10 @@
   --link-decoration-color: var(--clr-brightblue);
   --link-border-width: 2px;
   --link-border-color: transparent;
+	--link-active-color: oklch(from var(--link-color) calc(l * 1.1) c h);;
+	--link-visited-color: oklch(from var(--link-color) calc(l * 0.8) c h);
   --link-hover-color: var(--clr-brightblue);
   --link-hover-border-color: var(--clr-lightbrightblue);
-  --link-active-color: var(--clr-brightblue-alt);
 
   --clr-blob-01: var(--clr-gold);
   --clr-blob-02: var(--clr-maroonish);
@@ -83,10 +84,6 @@
 	--clr-bg: var(--color-lightbeige);
   --clr-fg: var(--clr-darkteal);
 
-	--link-color: var(--clr-greenbright);
-	--link-color-active: oklch(from var(--link-color) calc(l * 1.1) c h);;
-	--link-color-visited: oklch(from var(--link-color) calc(l * 0.8) c h);
-
 	--syntax-tab-size: 2;
 }
 
@@ -96,7 +93,7 @@
 		--color-gray-50: #C0C0C0;
 		--color-gray-90: #dad8d8;
 
-    --link-color: var(--clr-greenlighter);
+    /* --link-color: var(--clr-greenlighter); */
 
 		--clr-bg: var(--clr-darkteal);
     --clr-fg: var(--clr-lightbeige);
@@ -169,11 +166,13 @@ a[href] {
 
 }
 a[href]:visited {
-	color: var(--link-active-color);
+	color: var(--link-visited-color);
   border-color: var(--link-hover-border-color);
 }
+a[href]:active {
+  color: var(--link-active-color);
+}
 a[href]:hover,
-a[href]:active,
 a[href]:visited:hover,
 a[href]:focus {
 	color: var(--link-hover-color);
