@@ -101,7 +101,7 @@
 		--clr-bg: var(--clr-darkteal);
     --clr-fg: var(--clr-lightbeige);
 
-    --clr-blob-01: oklch(from var(--clr-darkblue) calc(l * 0.45) c calc(h * .85));
+    --clr-blob-01: oklch(from var(--clr-darkblue) calc(l * 0.5) c calc(h * .85) / 0.9);
     --clr-blob-02: var(--clr-maroonish);
   }
 }
