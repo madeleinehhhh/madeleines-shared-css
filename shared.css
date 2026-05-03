@@ -101,7 +101,7 @@
 		--clr-bg: var(--clr-darkteal);
     --clr-fg: var(--clr-lightbeige);
 
-    --clr-blob-01: var(--clr-darkgold);
+    --clr-blob-01: var(--clr-darkblueSS);
     --clr-blob-02: var(--clr-maroonish);
   }
 }
