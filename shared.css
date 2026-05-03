@@ -122,6 +122,25 @@ body {
   background-color: oklch(from var(--clr-bg) l c h / 0.6);
 }
 
+/* skip link */
+#skip-link {
+	text-decoration: none;
+	background: var(--background-color);
+	color: var(--text-color);
+	padding: 0.5rem 1rem;
+	border: 1px solid var(--color-gray-90);
+	border-radius: 2px;
+}
+
+/* Prevent visually-hidden skip link fom pushing content around when focused */
+#skip-link.visually-hidden:focus {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	/* Ensure it is positioned on top of everything else when it is shown */
+	z-index: 999;
+}
+
 /* Visually Hidden */
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
 .visually-hidden:not(:focus):not(:active) {
@@ -206,8 +225,69 @@ p {
   line-height: 1.9;
 }
 
-iframe {
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img{
   max-width: 100%;
-  aspect-ratio: 560/315;
+}
+img[width][height] {
   height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+video,
+iframe {
+	width: 100%;
+	height: auto;
+}
+iframe {
+	aspect-ratio: 16/9;
+}
+
+
+.container > header,
+.container > main,
+.container > section,
+.container > footer {
+  padding: calc(0.5vh + 0.5vw) 0;
+}
+.container > footer {
+  font-size: 0.8em;
+  margin: 0;
+  text-align: right;
+}
+
+.container > header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+  flex-wrap: wrap;
+
+  gap: 0.75em;
+
+  margin-block-end: 2em;;
+
+  nav {
+    width: 100%;
+
+    ul.nav {
+      margin:0;
+      padding:0;
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      font-size: var(--xx-small);
+
+      li {
+        padding: 0 .5em;
+        
+        &.current-page {
+          font-style: italic;
+        }
+      }
+    }
+  }
 }
