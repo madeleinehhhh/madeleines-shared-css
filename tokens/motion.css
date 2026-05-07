@@ -67,5 +67,4 @@
      Blobs use oklch alpha on their background color, not opacity on the
      element itself — so this is documentation, not a live token.
      Current value: 0.2 base, 0.4 peak (set in each gradient in animation.css) */
-
 }
