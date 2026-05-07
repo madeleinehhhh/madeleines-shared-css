@@ -1,0 +1,107 @@
+/* =============================================================================
+   TYPOGRAPHY TOKENS
+   tokens/type.css
+
+   Three sections:
+     1. Fonts        — families, declared here, @font-face in base/fonts.css
+     2. Scale        — fluid type scale built on a ratio, via pow()
+     3. Leading      — line-height values for each use context
+
+   The scale uses a single --type-base as the fluid midpoint and
+   --type-scale as the ratio. Adjust those two values to shift the
+   entire system proportionally.
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. FONT FAMILIES
+   ============================================================================= */
+
+:root {
+
+  --font-body:      'Inter', sans-serif;
+  --font-heading:   'Space Grotesk', sans-serif;
+  --font-mono:      monospace;
+
+}
+
+
+/* =============================================================================
+   2. TYPE SCALE
+   Fluid base via clamp(), all other steps derived via pow().
+   Reference: https://codepen.io/miriamsuzanne/pen/QwEXomP
+
+   Steps named by distance from base:
+     negative steps → smaller than body copy
+     --type-base    → base/medium (body copy)
+     positive steps → larger than body copy
+
+   Usage:
+     font-size: var(--type-base);     body copy
+     font-size: var(--type-sm);       captions, meta, nav
+     font-size: var(--type-xs);       fine print
+     font-size: var(--type-lg);       large body, intro text
+     font-size: var(--type-xl);       h6
+     font-size: var(--type-2xl);      h5
+     font-size: var(--type-3xl);      h4
+     font-size: var(--type-4xl);      h3
+     font-size: var(--type-5xl);      h2
+     font-size: var(--type-6xl);      h1
+   ============================================================================= */
+
+:root {
+
+  /* Fluid base — clamps between ~1em and ~1.25em depending on viewport */
+  --type-base:   clamp(1em, 22px + 1vi, 1.25em);
+
+  /* Scale ratio — increase for a more dramatic hierarchy, decrease for subtler */
+  --type-ratio:  1.1;
+
+  /* Negative steps (smaller than body) */
+  --type-xs:     calc(var(--type-base) * pow(var(--type-ratio), -1));
+  --type-sm:     calc(var(--type-base) * pow(var(--type-ratio), -.25));
+
+  /* Positive steps (larger than body) */
+  --type-lg:     calc(var(--type-base) * pow(var(--type-ratio), 1));
+  --type-xl:     calc(var(--type-base) * pow(var(--type-ratio), 2));
+  --type-2xl:    calc(var(--type-base) * pow(var(--type-ratio), 3));
+  --type-3xl:    calc(var(--type-base) * pow(var(--type-ratio), 4));
+  --type-4xl:    calc(var(--type-base) * pow(var(--type-ratio), 5));
+  --type-5xl:    calc(var(--type-base) * pow(var(--type-ratio), 6));
+  --type-6xl:    calc(var(--type-base) * pow(var(--type-ratio), 7));
+
+}
+
+
+/* =============================================================================
+   3. LEADING (line-height)
+
+   Three values covering the main use cases:
+     --leading-tight    headings, display text (no descenders to worry about)
+     --leading-normal   body copy, lists
+     --leading-loose    long-form prose (your current p line-height)
+   ============================================================================= */
+
+:root {
+
+  --leading-tight:   1;
+  --leading-normal:  1.5;
+  --leading-loose:   1.9;
+
+}
+
+
+/* =============================================================================
+   4. FONT WEIGHT
+
+   Space Grotesk is variable (200–800).
+   Inter is variable where loaded; these map to the range you're using.
+   ============================================================================= */
+
+:root {
+
+  --weight-normal:   400;
+  --weight-bold:     700;   /* for inline bold in body copy (p a, strong) */
+  --weight-heading:  400;   /* headings use Space Grotesk at normal weight */
+
+}

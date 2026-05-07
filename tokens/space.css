@@ -1,0 +1,56 @@
+/* =============================================================================
+   SPACING & LAYOUT TOKENS
+   tokens/space.css
+
+   Two sections:
+     1. Spacing scale  — 4 named steps covering actual usage
+     2. Layout         — container and fluid gutter values
+
+   Philosophy: em-based so spacing scales with local font size.
+   New components should use these steps rather than inventing new values.
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. SPACING SCALE
+   ============================================================================= */
+
+:root {
+
+  --space-xs:   0.5em;    /* nav item padding, tight insets           */
+  --space-sm:   0.75em;   /* header gap, comfortable component insets */
+  --space-md:   1rem;     /* prose margin, base unit                  */
+  --space-lg:   2em;      /* header separation, section breathing room*/
+
+  /* Flow space — used by .flow utility in base/type.css.
+     Fluid: tighter on small screens, roomier on large.
+     Override with a local --flow-space on any parent container.      */
+  --space-flow: clamp(0.5em, 0.5em + 1vw, 1em);
+
+  /* Link inset — the padding/border on a[href] elements.
+     Kept separate because it's a fixed px value, not relative.       */
+  --space-link-inset: 2px;
+
+}
+
+
+/* =============================================================================
+   2. LAYOUT
+   ============================================================================= */
+
+:root {
+
+  /* Container */
+  --layout-max-width:       70ch;
+  --layout-gutter-inline:   8vw;
+  --layout-gutter-block:    4vw;
+
+  /* Fluid section padding — scales with both viewport axes */
+  --layout-section-padding: calc(0.5vh + 0.5vw);
+
+  /* Footer and nav sizes — typographic, not spacing per se,
+     but scoped to layout context so they live here.          */
+  --layout-footer-size:     0.8em;
+  --layout-nav-size:        var(--type-xs);
+
+}

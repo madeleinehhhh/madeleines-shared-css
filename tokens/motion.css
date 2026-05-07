@@ -1,0 +1,71 @@
+/* =============================================================================
+   MOTION TOKENS
+   tokens/motion.css
+
+   Two sections:
+     1. Global motion   — easing, duration, reduced-motion preference
+     2. Blob defaults   — base values for the decorative blob system;
+                          individual blobs override these locally in
+                          base/animation.css using --_timing-* (private vars)
+
+   The --_timing-* variables in animation.css are intentionally private
+   (underscore prefix = internal to that file). Only the shared defaults
+   and the named easing/duration tokens live here.
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. GLOBAL MOTION
+   ============================================================================= */
+
+:root {
+
+  /* --- Easing ---
+     The site's signature curve: fast in, slow settle.
+     Used on link transitions and anything that should feel snappy but smooth. */
+  --ease-default:       cubic-bezier(0.07, 1.00, 0.00, 1.00);
+
+  /* --- Duration ---
+     --duration-ui: interactions (links, hovers, focus) — fast enough to feel
+                    responsive, slow enough to feel intentional.
+     --duration-entrance: elements appearing / larger transitions.            */
+  --duration-ui:        1200ms;
+  --duration-entrance:  600ms;
+  --duration-fast:      200ms;
+
+}
+
+/* --- Reduced motion ---
+   Override durations to near-instant for users who prefer less motion.
+   The blob animations in base/animation.css should also check this.         */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-ui:      0ms;
+    --duration-entrance:0ms;
+    --duration-fast:    0ms;
+    --ease-default:     linear;
+  }
+}
+
+
+/* =============================================================================
+   2. BLOB DEFAULTS
+   These are the fallback values for the blob system. Each blob in
+   base/animation.css overrides what it needs with local --_timing-* vars.
+   ============================================================================= */
+
+:root {
+
+  /* --- Timing defaults (overridden per blob) --- */
+  --blob-duration-morph:    40s;    /* how long one blobby cycle takes      */
+  --blob-duration-drift:    600s;   /* how long one full movement cycle     */
+
+  /* --- Size default --- */
+  --blob-size-default:      50vw;
+
+  /* --- Opacity ---
+     Blobs use oklch alpha on their background color, not opacity on the
+     element itself — so this is documentation, not a live token.
+     Current value: 0.2 base, 0.4 peak (set in each gradient in animation.css) */
+
+}

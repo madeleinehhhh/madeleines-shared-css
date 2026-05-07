@@ -1,0 +1,169 @@
+/* =============================================================================
+   COLOR TOKENS
+   tokens/color.css
+
+   Three tiers:
+     1. Primitives    — raw values, named by hue. Never used outside this file.
+     2. Semantic      — named by role. Base styles and layout reference these.
+     3. Component     — named by context (--button-bg, --link-text…).
+                        Pattern documented at the bottom; defined per component.
+
+   Dark mode: semantic overrides only. Primitives never change.
+   ============================================================================= */
+
+
+/* =============================================================================
+   TIER 1 — PRIMITIVES
+   ============================================================================= */
+
+:root {
+
+  /* --- Neutrals --- */
+  --primitive-darkteal:     #182024;
+  --primitive-lightbeige:   #f6f1ee;
+
+  /* --- Blues --- */
+  --primitive-blue-dark:    #044488;
+  --primitive-blue:         #0D6FBA;
+  --primitive-blue-bright:  #0099FF;
+  --primitive-blue-light:   #77B0CE;
+  --primitive-blue-lightest:#71bfe9;
+
+  /* --- Greens --- */
+  --primitive-green:        #618616;
+  --primitive-green-light:  #8EA75D;
+
+  /* --- Teals (reserved, unused currently) --- */
+  --primitive-teal:         #4E8B8C;
+
+  /* --- Golds --- */
+  --primitive-gold:         oklch(78.266% 0.14194 89.569);
+  --primitive-gold-dark:    oklch(25.946% 0.05084 82.077);
+
+  /* --- Reds / warm --- */
+  --primitive-warm:         #9E3F4E;
+  --primitive-warm-light:   #FFC9B9;
+  --primitive-orange:       #FF6924;
+  --primitive-orange-dark:  #bd4500;
+  --primitive-salmon:       #D7765B;
+  --primitive-beige:        #DCB39E;
+
+}
+
+
+/* =============================================================================
+   TIER 2 — SEMANTIC (light mode defaults)
+   ============================================================================= */
+
+:root {
+
+  /* --- Surfaces --- */
+  --color-surface-page:           var(--primitive-lightbeige);
+  --color-surface-container:      var(--primitive-lightbeige);
+  --color-text-default:           var(--primitive-darkteal);
+
+  /* --- Palette (flat, by hue) --- */
+  --color-blue-dark:              var(--primitive-blue-dark);
+  --color-blue:                   var(--primitive-blue);
+  --color-blue-bright:            var(--primitive-blue-bright);
+  --color-blue-light:             var(--primitive-blue-light);
+  --color-blue-lightest:          var(--primitive-blue-lightest);
+
+  --color-green:                  var(--primitive-green);
+  --color-green-light:            var(--primitive-green-light);
+
+  --color-gold:                   var(--primitive-gold);
+  --color-gold-dark:              var(--primitive-gold-dark);
+
+  --color-warm:                   var(--primitive-warm);
+  --color-warm-light:             var(--primitive-warm-light);
+
+  --color-accent:                 var(--primitive-orange-dark);
+
+  /* --- Interactive (links, focus, hover states) --- */
+  --color-interactive:            var(--color-blue);
+  --color-interactive-hover:      var(--color-blue-bright);
+  --color-interactive-active:     oklch(from var(--color-interactive) calc(l * 1.1) c h);
+  --color-interactive-visited:    oklch(from var(--color-interactive) calc(l * 0.8) c h);
+  --color-interactive-underline:  var(--color-blue-bright);
+  --color-interactive-focus-ring: var(--color-blue-lightest);
+
+  /* --- Borders --- */
+  --color-border-default:         transparent;
+  --color-border-interactive:     var(--color-blue-lightest);
+  --color-border-subtle:          var(--color-blue-lightest);
+
+  /* --- Decorative --- */
+  --color-decor-blob-a:           var(--color-gold);
+  --color-decor-blob-b:           var(--color-warm);
+
+}
+
+
+/* =============================================================================
+   TIER 2 — SEMANTIC (dark mode overrides)
+   ============================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+
+    /* Surfaces flip */
+    --color-surface-page:           var(--primitive-darkteal);
+    --color-surface-container:      var(--primitive-darkteal);
+    --color-text-default:           var(--primitive-lightbeige);
+
+    /* Links brighten on dark bg */
+    --color-interactive:            var(--color-blue-bright);
+    --color-interactive-hover:      var(--color-blue);
+    --color-interactive-underline:  var(--color-blue);
+
+    /* Blobs cool down on dark bg */
+    --color-decor-blob-a:           oklch(from var(--primitive-blue-dark) calc(l * 0.5) c calc(h * .85) / 0.9);
+    --color-decor-blob-b:           var(--color-warm);
+
+  }
+}
+
+
+/* =============================================================================
+   TIER 3 — COMPONENT SLOTS (pattern documentation)
+
+   Don't define component slots here. Each component sets its own local vars
+   by mapping from tier 2, then uses only those local vars internally.
+   This means you can override a single component without touching the token.
+
+   Example — links (base/type.css):
+
+     a[href] {
+       --link-text:        var(--color-interactive);
+       --link-underline:   var(--color-interactive-underline);
+       --link-border:      var(--color-border-default);
+       --link-hover:       var(--color-interactive-hover);
+       --link-focus-ring:  var(--color-interactive-focus-ring);
+
+       color:              var(--link-text);
+       border-color:       var(--link-border);
+     }
+     a[href]:hover { color: var(--link-hover); }
+
+   Example — primary button (components/button.css):
+
+     .btn-primary {
+       --button-text:      var(--primitive-lightbeige);
+       --button-bg:        var(--color-blue-bright);
+       --button-border:    var(--color-blue-dark);
+       --button-hover-bg:  var(--color-blue);
+
+       color:              var(--button-text);
+       background:         var(--button-bg);
+       border-color:       var(--button-border);
+     }
+     .btn-primary:hover { background: var(--button-hover-bg); }
+
+   Example — per-site surface override (sites/madeleine-cool/overrides.css):
+
+     :root {
+       --color-surface-page: var(--primitive-darkteal);
+     }
+
+   ============================================================================= */

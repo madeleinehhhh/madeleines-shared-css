@@ -1,5 +1,10 @@
 {
   "name": "@madeleinehhhh/madeleines-shared-css",
-  "version": "1.0.0",
-  "main": "shared.css"
+  "version": "2.0.0",
+  "main": "shared.css",
+  "files": [
+    "tokens/",
+    "base/",
+    "shared.css"
+  ]
 }

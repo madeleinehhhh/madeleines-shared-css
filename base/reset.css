@@ -1,0 +1,93 @@
+/* =============================================================================
+   RESET & GLOBAL ELEMENT DEFAULTS
+   base/reset.css
+
+   Minimal resets and sensible defaults for bare HTML elements.
+   No classes except accessibility utilities (.visually-hidden, #skip-link).
+   All values reference tokens — no magic numbers.
+
+   Load order: fonts.css → reset.css → type.css → layout.css
+   ============================================================================= */
+
+
+/* --- Document & body --- */
+
+html {
+  scroll-timeline: --page-scroll block;
+}
+
+body {
+  font-family:      var(--font-body);
+  font-size:        var(--type-sm);
+  line-height:      var(--leading-normal);
+  background-color: var(--color-surface-page);
+  color:            var(--color-text-default);
+  position:         relative;
+}
+
+
+/* --- Images & media ---
+   Via https://www.zachleat.com/web/fluid-images/                          */
+
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+video,
+iframe {
+  width: 100%;
+  height: auto;
+}
+iframe {
+  aspect-ratio: 16 / 9;
+}
+
+
+/* --- Paragraphs --- */
+
+p {
+  margin: var(--space-md) 0;
+  line-height: var(--leading-loose);
+}
+
+
+/* =============================================================================
+   ACCESSIBILITY UTILITIES
+   ============================================================================= */
+
+/* Skip link — always present, only visible on focus */
+#skip-link {
+  text-decoration: none;
+  background:      var(--color-surface-page);
+  color:           var(--color-text-default);
+  padding:         var(--space-xs) var(--space-md);
+  border:          1px solid var(--color-border-subtle);
+  border-radius:   2px;
+}
+
+#skip-link.visually-hidden:focus {
+  position: absolute;
+  top:      var(--space-md);
+  left:     var(--space-md);
+  z-index:  999;
+}
+
+/* Visually hidden — hides content visually while keeping it in the a11y tree.
+   Via https://www.a11yproject.com/posts/how-to-hide-content/               */
+.visually-hidden:not(:focus):not(:active) {
+  clip:        rect(0 0 0 0);
+  clip-path:   inset(50%);
+  height:      1px;
+  overflow:    hidden;
+  position:    absolute;
+  white-space: nowrap;
+  width:       1px;
+}

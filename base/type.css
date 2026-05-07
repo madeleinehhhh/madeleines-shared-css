@@ -1,0 +1,119 @@
+/* =============================================================================
+   BASE TYPOGRAPHY
+   base/type.css
+
+   Applies the type token scale to HTML elements.
+   Also contains the .flow spacing utility and site-title treatment.
+
+   All values reference tokens — no magic numbers.
+   Load order: fonts.css → reset.css → type.css → layout.css
+   ============================================================================= */
+
+
+/* =============================================================================
+   HEADINGS
+   ============================================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.site-title {
+  font-family:  var(--font-heading);
+  font-weight:  var(--weight-heading);
+  line-height:  var(--leading-tight);
+  margin:       0;
+}
+
+h1 { font-size: var(--type-6xl); }
+h2 { font-size: var(--type-5xl); }
+h3 { font-size: var(--type-4xl); }
+h4 { font-size: var(--type-3xl); }
+h5 { font-size: var(--type-2xl); }
+h6 { font-size: var(--type-xl);  }
+
+/* Site title — intentionally small so it doesn't compete with content
+   and doesn't overflow on small screens. See tokens/type.css.           */
+.site-title {
+  font-size: var(--type-sm);
+}
+.site-title a {
+  font-weight: var(--weight-normal);
+}
+
+
+/* =============================================================================
+   LINKS
+   ============================================================================= */
+
+a[href] {
+  /* Component slots — map from semantic tokens */
+  --link-text:        var(--color-interactive);
+  --link-underline:   var(--color-interactive-underline);
+  --link-border:      var(--color-border-default);
+  --link-hover:       var(--color-interactive-hover);
+  --link-visited:     var(--color-interactive-visited);
+  --link-active:      var(--color-interactive-active);
+  --link-focus-ring:  var(--color-interactive-focus-ring);
+
+  position:                 relative;
+  color:                    var(--link-text);
+  text-decoration-style:    dotted;
+  text-decoration-thickness:1px;
+  text-decoration-color:    var(--link-border);
+  border:                   var(--space-link-inset) dotted var(--link-border);
+  padding:                  var(--space-link-inset);  /* tokens/space.css */
+
+  /* Scope transition to only the properties that actually change.
+     Avoids transitioning layout properties (display, position, etc). */
+  transition:
+    color           var(--duration-ui) var(--ease-default),
+    border-color    var(--duration-ui) var(--ease-default),
+    text-decoration-color var(--duration-ui) var(--ease-default);
+}
+
+a[href]:visited {
+  color:        var(--link-visited);
+  border-color: var(--link-focus-ring);
+}
+
+a[href]:active {
+  color: var(--link-active);
+}
+
+a[href]:hover,
+a[href]:visited:hover,
+a[href]:focus {
+  color: var(--link-hover);
+}
+
+/* Links in prose — heavier weight to distinguish from surrounding text */
+p a,
+ul a,
+ol a {
+  font-weight: var(--weight-bold);
+}
+
+
+/* =============================================================================
+   FLOW UTILITY
+   Via https://piccalil.li/blog/flow-utility/
+
+   Adds top margin between sibling elements.
+   Override --flow-space on a parent to adjust rhythm for that context.
+   ============================================================================= */
+
+.flow > * + * {
+  margin-top: var(--flow-space, var(--space-flow));  /* --space-flow from tokens/space.css */
+}
+
+/* Tighter flow — for dense lists, coursework, metadata */
+.flow-tight {
+  --flow-space: calc(0.1rem + 1vw);
+}
+
+/* Legacy aliases — keep these while both sites still use the old names */
+.little-to-no-spacing { --flow-space: calc(0.1rem + 1vw); }
+.coursework           { --flow-space: calc(0.1rem + 1vw); font-size: 0.8em; }

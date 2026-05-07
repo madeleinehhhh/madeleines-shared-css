@@ -1,0 +1,30 @@
+/* =============================================================================
+   FONTS
+   base/fonts.css
+
+   @font-face declarations and view transition opt-in.
+   Load this first — before any file that references --font-* tokens.
+
+   Inter is loaded from the system/CDN (not self-hosted).
+   Space Grotesk is self-hosted as a variable font.
+   ============================================================================= */
+
+
+/* --- Self-hosted variable fonts --- */
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+  font-weight: 200 800;
+  font-optical-sizing: auto;
+  font-display: swap;
+}
+
+
+/* --- View transitions ---
+   Opt in to cross-document view transitions for navigation.
+   Applies to any page that loads this stylesheet.              */
+
+@view-transition {
+  navigation: auto;
+}
